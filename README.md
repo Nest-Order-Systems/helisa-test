@@ -11,7 +11,7 @@ Este proyecto es una arquitectura de microservicios construida con **NestJS**, q
 
 ## 📁 Estructura del Proyecto
 
-nestjs-order-system/ │ ├── client-gateway/ # API Gateway ├── inventory-microservice/ │ └── inventory-ms/ # Microservicio de Inventario ├── order-microservice/ │ └── orders-ms/ # Microservicio de Órdenes ├── delivery-microservice/ │ └── delivery-ms/ # Microservicio de Entregas ├── docker-compose.yml # Levanta las bases de datos requeridas └── README.md
+nestjs-order-system/ │ ├── client-gateway/ # API Gateway ├──  │ └── inventory-ms/ # Microservicio de Inventario ├── order-microservice/ │ └── orders-ms/ # Microservicio de Órdenes ├── delivery-microservice/ │ └── delivery-ms/ # Microservicio de Entregas ├── docker-compose.yml # Levanta las bases de datos requeridas └── README.md
 
 ---
 - Node.js >= 20
@@ -20,3 +20,10 @@ nestjs-order-system/ │ ├── client-gateway/ # API Gateway ├── inven
 - Nest CLI (opcional): `npm i -g @nestjs/cli`
 
 ---
+
+## 🐳 Configuración con Docker
+
+Primero levanta las bases de datos necesarias:
+
+```bash
+docker-compose up -d
