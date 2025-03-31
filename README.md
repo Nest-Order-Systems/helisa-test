@@ -11,7 +11,7 @@ Este proyecto es una arquitectura de microservicios construida con **NestJS**, q
 
 ## 📁 Estructura del Proyecto
 
-nestjs-order-system/ │ ├── client-gateway/ # API Gateway ├──  │ └── inventory-ms/ # Microservicio de Inventario ├── order-microservice/ │ └── orders-ms/ # Microservicio de Órdenes ├── delivery-microservice/ │ └── delivery-ms/ # Microservicio de Entregas ├── docker-compose.yml # Levanta las bases de datos requeridas └── README.md
+helisa-test/ │ ├── client-gateway/ # 🚪 API Gateway (punto de entrada) │ ├── delivery-ms/ # 🚚 Microservicio de entregas │ └── prisma/ # Esquema y migraciones de base de datos │ └── src/ # Código fuente del microservicio │ ├── inventory-ms/ # 📦 Microservicio de inventario │ └── prisma/ # Esquema y migraciones de base de datos │ └── src/ # Código fuente del microservicio │ ├── orders-ms/ # 🛒 Microservicio de órdenes │ └── prisma/ # Esquema y migraciones de base de datos │ └── src/ # Código fuente del microservicio │ ├── postman/ # 📬 Colección de pruebas con Postman │ ├── docker-compose.yml # 🐳 Levanta bases de datos PostgreSQL ├── README.md # 📘
 
 ---
 
@@ -30,6 +30,22 @@ Desde la raíz del proyecto, levanta las bases de datos necesarias:
 
 ```bash
 docker-compose up -d
+```
+
+## 🚀 Levantar el servidor de NATS
+
+Este sistema usa NATS para la comunicación entre microservicios. Para levantar un servidor local:
+
+```bash
+docker run -d --name nats-server -p 4222:4222 -p 8222:8222 nats
+```
+
+### 🧪 Precargar datos de inventario
+---
+Después de ejecutar las migraciones, puedes insertar datos de prueba con:
+
+```bash
+npm run seed
 ```
 
 ## Levantar los servicios
