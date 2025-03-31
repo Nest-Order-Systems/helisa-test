@@ -24,14 +24,6 @@ helisa-test/ │ ├── client-gateway/ # 🚪 API Gateway (punto de entrada)
 
 ---
 
-## 🐳 Configuración con Docker
-
-Desde la raíz del proyecto, levanta las bases de datos necesarias:
-
-```bash
-docker-compose up -d
-```
-
 ## 🚀 Levantar el servidor de NATS
 
 Este sistema usa NATS para la comunicación entre microservicios. Para levantar un servidor local:
@@ -40,11 +32,42 @@ Este sistema usa NATS para la comunicación entre microservicios. Para levantar 
 docker run -d --name nats-server -p 4222:4222 -p 8222:8222 nats
 ```
 
+## 🐳 Configuración con Docker
+
+Cada microservicio contiene su propio archivo docker-compose.yml para levantar la base de datos correspondiente. Debes ejecutar el siguiente comando dentro de cada carpeta de microservicio:
+
+```bash
+docker-compose up -d
+```
+## 📍 Ejecutar por microservicio:
+
+Inventory Microservice
+
+1. Inventory Microservice
+```bash
+cd inventory-ms
+docker-compose up -d
+```
+
+2. Orders Microservice
+```bash
+cd orders-ms
+docker-compose up -d
+```
+
+3. Delivery Microservice
+```bash
+cd delivery-ms
+docker-compose up -d
+```
+
+
 ### 🧪 Precargar datos de inventario
 ---
 Después de ejecutar las migraciones, puedes insertar datos de prueba con:
 
 ```bash
+cd inventory-ms
 npm run seed
 ```
 
@@ -102,8 +125,8 @@ Puedes probar el sistema fácilmente usando **Postman** con nuestra colección p
 - `GET /inventory`
 - `GET /inventory/:id`
 - `POST /orders`
-- `GET /orders/:id`
-- `GET /delivery/:id`
+- `GET /orders`
+- `GET /delivery`
 
 🔗 **Colección Postman:** [📥 Enlace a la colección](./postman/Order%20System%20Inventory.postman_collection.json)
 
